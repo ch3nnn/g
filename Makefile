@@ -114,4 +114,4 @@ upgrade-deps:
 mcp-inspector: build
 	npx @modelcontextprotocol/inspector ./bin/g mcp
 
-.PHONY: all build install install-tools lint test test-coverage view-coverage addlicense package clean upgrade-deps mcp-inspector build-linux build-darwin build-windows build-linux-386 build-linux-amd64 build-linux-arm build-linux-arm64 build-linux-s390x build-linux-riscv64 build-darwin-amd64 build-darwin-arm64 build-windows-386 build-windows-amd64 build-windows-arm build-windows-arm64 build-freebsd-386 build-freebsd-amd64 build-freebsd-arm build-freebsd-arm64 build-freebsd-riscv64
+.PHONY: all build install install-tools lint test test-coverage view-coverage addlicense package clean upgrade-deps mcp-inspector build-linux build-darwin build-windows build-linux-386 build-linux-amd64 build-linux-arm build-linux-arm64 build-linux-s390x build-linux-riscv64 build-darwin-amd64 build-darwin-arm64 build-windows-386 build-windows-amd64 build-windows-arm build-windows-arm64 build-freebsd build-freebsd-386 build-freebsd-amd64 build-freebsd-arm build-freebsd-arm64 build-freebsd-riscv64
