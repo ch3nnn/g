@@ -14,7 +14,7 @@ build:
 install: build
 	$(GO) install $(GO_FLAGS)
 
-build-all: build-linux build-darwin build-windows
+build-all: build-linux build-darwin build-windows build-freebsd
 
 build-linux: build-linux-386 build-linux-amd64 build-linux-arm build-linux-arm64 build-linux-s390x build-linux-riscv64
 build-linux-386:
@@ -47,6 +47,19 @@ build-windows-arm:
 	GOOS=windows GOARCH=arm $(GO) build $(GO_FLAGS) -o bin/windows-arm/g.exe
 build-windows-arm64:
 	GOOS=windows GOARCH=arm64 $(GO) build $(GO_FLAGS) -o bin/windows-arm64/g.exe
+
+
+build-freebsd: build-freebsd-386 build-freebsd-amd64 build-freebsd-arm build-freebsd-arm64 build-freebsd-riscv64
+build-freebsd-386:
+	GOOS=freebsd GOARCH=386 $(GO) build $(GO_FLAGS) -o bin/freebsd-386/g
+build-freebsd-amd64:
+	GOOS=freebsd GOARCH=amd64 $(GO) build $(GO_FLAGS) -o bin/freebsd-amd64/g
+build-freebsd-arm:
+	GOOS=freebsd GOARCH=arm $(GO) build $(GO_FLAGS) -o bin/freebsd-arm/g
+build-freebsd-arm64:
+	GOOS=freebsd GOARCH=arm64 $(GO) build $(GO_FLAGS) -o bin/freebsd-arm64/g
+build-freebsd-riscv64:
+	GOOS=freebsd GOARCH=riscv64 $(GO) build $(GO_FLAGS) -o  bin/freebsd-riscv64/g
 
 package:
 	sh ./package.sh
@@ -101,4 +114,4 @@ upgrade-deps:
 mcp-inspector: build
 	npx @modelcontextprotocol/inspector ./bin/g mcp
 
-.PHONY: all build install install-tools lint test test-coverage view-coverage addlicense package clean upgrade-deps mcp-inspector build-linux build-darwin build-windows build-linux-386 build-linux-amd64 build-linux-arm build-linux-arm64 build-linux-s390x build-linux-riscv64 build-darwin-amd64 build-darwin-arm64 build-windows-386 build-windows-amd64 build-windows-arm build-windows-arm64
+.PHONY: all build install install-tools lint test test-coverage view-coverage addlicense package clean upgrade-deps mcp-inspector build-linux build-darwin build-windows build-linux-386 build-linux-amd64 build-linux-arm build-linux-arm64 build-linux-s390x build-linux-riscv64 build-darwin-amd64 build-darwin-arm64 build-windows-386 build-windows-amd64 build-windows-arm build-windows-arm64 build-freebsd-386 build-freebsd-amd64 build-freebsd-arm build-freebsd-arm64 build-freebsd-riscv64

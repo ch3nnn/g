@@ -39,7 +39,7 @@ function package() {
     local os=${osarch[0]}
     local arch=${osarch[1]}
 
-    printf "[1/2] Cross compile@%s_%s\n" ${os} ${arch}
+    printf "[1origin freebsd-support/2] Cross compile@%s_%s\n" ${os} ${arch}
     GOOS=${os} GOARCH=${arch} gbb
 
     printf "[2/2] Package\n"
@@ -59,7 +59,7 @@ main() {
 
     local release="1.8.0"
 
-    for item in "darwin_amd64" "darwin_arm64" "linux_386" "linux_amd64" "linux_arm" "linux_arm64" "linux_s390x" "linux_riscv64" "windows_386" "windows_amd64" "windows_arm" "windows_arm64"; do
+    for item in "darwin_amd64" "darwin_arm64" "linux_386" "linux_amd64" "linux_arm" "linux_arm64" "linux_s390x" "linux_riscv64" "windows_386" "windows_amd64" "windows_arm" "windows_arm64 build-freebsd-386 freebsd_amd64 freebsd_arm freebsd_arm64 freebsd_riscv64"; do
         package ${release} ${item}
     done
 

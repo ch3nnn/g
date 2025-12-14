@@ -107,6 +107,36 @@ if test -s "$HOME/.g/env.fish"; and source "$HOME/.g/env.fish"; end
 EOF_G_FISH_CONF
     fi
 
+    if [ -x "$(command -v csh)" ]; then 
+        cat >>${HOME}/.cshrc <<-'EOF'
+setenv GOROOT "$HOME/.g/go"
+
+if ( ! $?GOPATH ) then
+    setenv GOPATH "$HOME/go"
+else if ( "$GOPATH" == "" ) then
+    setenv GOPATH "$HOME/go"
+endif
+
+setenv PATH "$HOME/.g/bin:$GOROOT/bin:$GOPATH/bin:$PATH"
+setenv G_MIRROR "https://golang.google.cn/dl/"
+		EOF
+    fi
+
+    if [ -x "$(command -v tcsh)" ]; then 
+        cat >>${HOME}/.tcshrc <<-'EOF'
+setenv GOROOT "$HOME/.g/go"
+
+if ( ! $?GOPATH ) then
+    setenv GOPATH "$HOME/go"
+else if ( "$GOPATH" == "" ) then
+    setenv GOPATH "$HOME/go"
+endif
+
+setenv PATH "$HOME/.g/bin:$GOROOT/bin:$GOPATH/bin:$PATH"
+setenv G_MIRROR "https://golang.google.cn/dl/"
+		EOF
+    fi
+
     echo -e "\nTo configure your current shell, run:\nsource \"$HOME/.g/env\""
 
     exit 0
